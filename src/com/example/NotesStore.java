@@ -50,6 +50,11 @@ public class NotesStore {
         return sb.toString();
     }
 
+    public int count() throws IOException {
+        ensureStorage();
+        return readAllRawLines().size();
+    }
+
     private void ensureStorage() throws IOException {
         if (!Files.exists(dataDir)) {
             Files.createDirectories(dataDir);
