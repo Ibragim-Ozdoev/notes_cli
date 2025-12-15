@@ -1,89 +1,84 @@
-# notes-cli
 
-**Автор:** <ВАШ_GITHUB_NICK> — https://github.com/<ВАШ_GITHUB_NICK>
+Notes CLI
 
-Консольная утилита для хранения текстовых заметок в файле `data/notes.csv`.
+Автор
 
-## Команды
+GitHub:https://github.com/Ibragim-Ozdoev/
 
-### Добавить заметку
-```bash
-java -cp src com.example.App --cmd=add --text="Купить хлеб"
-```
+Возможности приложения
 
-### Показать список
-```bash
-java -cp src com.example.App --cmd=list
-```
+Добавление заметок
 
-Если заметок нет — выводится:
-```
-(empty)
-```
+Просмотр списка заметок
 
-### Посчитать количество (v1.1.0)
-```bash
-java -cp src com.example.App --cmd=count
-```
+Подсчёт количества заметок
 
-Пример вывода:
-```
-3
-```
+Хранение данных в файле data/notes.csv
 
-## Формат хранения
+Запуск как локально, так и в Docker
 
-Каждая строка файла `data/notes.csv`:
-```
-ID;ТЕКСТ
-```
+CI через GitHub Actions
+
+Работа с ветками, Pull Request и релизами
+
+Формат хранения заметок
+
+Файл: data/notes.csv
+
+id;текст
 
 Пример:
-```
-1;Купить молоко
-2;Позвонить другу
-```
 
-## Локальный запуск (без Maven)
+1;Купить хлеб 2;Позвонить другу
 
-1) Компиляция:
-```bash
-javac src/com/example/*.java
-```
+▶ Запуск локально (без Docker) Компиляция javac src/com/example/*.java
 
-2) Запуск:
-```bash
-java -cp src com.example.App --cmd=add --text="Купить хлеб"
-java -cp src com.example.App --cmd=list
-```
+Добавить заметку java -cp src com.example.App --cmd=add --text="Купить хлеб"
 
-## Docker
+Показать список java -cp src com.example.App --cmd=list
 
-Сборка:
-```bash
+Посчитать количество java -cp src com.example.App --cmd=count
+
+Запуск через Docker Сборка Docker-образа
+
+В корне проекта:
+
 docker build -t notes-cli:dev .
-```
 
-Запуск с volume (данные сохраняются на хосте):
-```bash
-mkdir -p data
-docker run --rm -v "$PWD/data:/app/data" notes-cli:dev --cmd=add --text="Test"
-docker run --rm -v "$PWD/data:/app/data" notes-cli:dev --cmd=list
-docker run --rm -v "$PWD/data:/app/data" notes-cli:dev --cmd=count
-```
+▶ Запуск контейнера
 
-### PowerShell (Windows)
-```powershell
-mkdir data -Force | Out-Null
-docker run --rm -v "${PWD}\data:/app/data" notes-cli:dev --cmd=add --text="Test"
-docker run --rm -v "${PWD}\data:/app/data" notes-cli:dev --cmd=list
-docker run --rm -v "${PWD}\data:/app/data" notes-cli:dev --cmd=count
-```
+Важно: команда монтирует папку data/ с хоста, чтобы заметки сохранялись после остановки контейнера.
 
-## Версии (SemVer)
+Добавить заметку docker run --rm -v "%cd%/data:/app/data" note-cli:dev --cmd=add --text="Купить хлеб"
 
-- **v1.0.0** — команды `add` и `list`.
-- **v1.1.0** — добавлена новая команда `count`.
+Показать список заметок docker run --rm -v "%cd%/data:/app/data" note-cli:dev --cmd=list
 
-## Заметка про альтернативную фичу `rm`
-По ТЗ допускается вместо `count` реализовать `rm` (удаление по `--id`). Делайте это в отдельной ветке `feature/...` и через PR в `main`.
+Посчитать количество заметок docker run --rm -v "%cd%/data:/app/data" note-cli:dev --cmd=count
+
+История версий v1.0.0 — Initial release
+
+Реализованы команды:
+
+add
+
+list
+
+Настроен CI (GitHub Actions)
+
+Добавлен Dockerfile
+
+Выпущен первый релиз
+
+v1.1.0 — Add count command
+
+Добавлена новая команда:
+
+count
+
+Реализация выполнена в отдельной ветке
+
+Создан Pull Request и выполнен merge
+
+Выпущен релиз v1.1.0
+
+<img width="1915" height="1033" alt="image" src="https://github.com/user-attachments/assets/2992c9f9-71c6-4253-9610-1d91b4bc9586" />
