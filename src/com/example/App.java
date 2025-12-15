@@ -33,6 +33,12 @@ public class App {
                     System.out.print(out);
                     break;
                 }
+                case "count": {
+                    int c = store.count();
+                    System.out.println(c);
+                    break;
+                }
+                // Для альтернативной фичи "rm" см. заметку в README: можно реализовать в отдельной ветке.
                 default:
                     System.out.println("Unknown cmd: " + cmd);
                     printUsage();
@@ -63,5 +69,6 @@ public class App {
         System.out.println("Usage:");
         System.out.println("  --cmd=add --text=\"Купить хлеб\"");
         System.out.println("  --cmd=list");
+        System.out.println("  --cmd=count");
     }
 }
